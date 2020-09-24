@@ -1,12 +1,22 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.utils import timezone
 
 from .models import Product
 
 # Create your views here.
 
 
-def products(request):
+def products_list(request):
     products = Product.objects.all()
-    return render(request, 'products.html', {'products': products})
+    context = {'products': products, 'has_products': len(products)}
+
+    return render(request, 'products/products-list.html', context)
+
+
+def product_details(request, pk):
+    try:
+        product = Product.objects.get(pk=pk)
+        context = {'product': product}
+    except:
+        context = {'no_product': False}
+
+    return render(request, 'products/product-details.html', context)

@@ -9,8 +9,14 @@
 }
 
 .root {
+  position: relative;
   min-width: 1440px;
+  min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  text-decoration: none;
 }
 
 button {

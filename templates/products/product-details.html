@@ -25,8 +25,13 @@
       type="text/css"
       href="{% static 'style/modules/main.css' %}"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'style/modules/footer.css' %}"
+    />
 
-    <title>Products</title>
+    <title>Title</title>
   </head>
   <body>
     <div class="root">
@@ -44,28 +49,30 @@
         </div>
       </header>
 
+      {% if not product %}
       <main class="main">
-        <div class="main-header">
-          <h1 class="main-h1">Featured Products</h1>
-          <p class="main-header-desc">
-            Refresh your lock with pieces of our winter collection
-          </p>
+        <p class="main-no-prods">There is no product with this ID</p>
+      </main>
+      {% else %}
+      <main class="main main-details">
+        <div class="main-prod-img-cont">
+          <img class="main-prod-img" src="" alt="Image" />
         </div>
 
-        <div class="main-products">
-          {% for product in products %}
-          <div class="main-product-cont">
-            <div class="main-prod-img-cont">
-              <img class="main-prod-img" src="" alt="Image" />
-              <button class="main-prod-details">DETAILS</button>
-            </div>
-
-            <p class="main-prod-name">{{ product.title }}</p>
-            <p>{{ product.id }}</p>
-          </div>
-          {% endfor %}
+        <div>
+          <p class="main-prod-name">{{ product.title }}</p>
+          {% if product.description %}
+          <p class="main-prod-desc">{{ product.description }}</p>
+          {% else %}
+          <p class="main-prod-desc">No description for this product</p>
+          {% endif %}
         </div>
       </main>
+      {% endif %}
+
+      <footer class="footer">
+        <p>&copy; <span id="footer-year"></span> STORE All Right Reserved.</p>
+      </footer>
     </div>
   </body>
 </html>
