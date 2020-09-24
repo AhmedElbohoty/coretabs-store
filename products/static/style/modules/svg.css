@@ -1,0 +1,11 @@
+/* #region svg cart */
+.svg-cart {
+  width: 20px;
+  height: 20px;
+  transition: opacity var(--trans-timing-fun) 300ms;
+}
+
+.svg-cart:hover {
+  opacity: 0.8;
+}
+/* #endregion svg cart */
