@@ -7,7 +7,7 @@ from .models import Product
 
 def products_list(request):
     products = Product.objects.all()
-    context = {'products': products, 'has_products': len(products)}
+    context = {'products': products}
 
     return render(request, 'products/products-list.html', context)
 
@@ -17,6 +17,6 @@ def product_details(request, pk):
         product = Product.objects.get(pk=pk)
         context = {'product': product}
     except:
-        context = {'no_product': False}
+        context = {'product': False}
 
     return render(request, 'products/product-details.html', context)

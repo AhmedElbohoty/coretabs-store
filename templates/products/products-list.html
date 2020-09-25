@@ -59,7 +59,7 @@
           </p>
         </div>
 
-        {% if not has_products %}
+        {% if not products %}
         <p class="main-no-prods">New products will be available soon</p>
         {% endif %}
 
@@ -68,7 +68,9 @@
           <div class="main-product-cont">
             <div class="main-prod-img-cont">
               <img class="main-prod-img" src="" alt="Image" />
-              <a href="{{ product.get_absolute_url }}" class="main-prod-link"
+              <a
+                href="{% url 'product_details' product.pk %}"
+                class="main-prod-link"
                 >DETAILS</a
               >
             </div>
