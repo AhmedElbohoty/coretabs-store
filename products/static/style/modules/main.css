@@ -91,6 +91,12 @@
   font-size: 24px;
 }
 
+.main-prod-price {
+  margin: 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
 /* #region product details */
 .main-details {
   display: flex;
