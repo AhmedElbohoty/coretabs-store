@@ -70,6 +70,16 @@
           <p class="main-prod-desc">No description for this product</p>
           {% endif %}
           <p class="main-prod-name">{{ product.price }}$</p>
+
+          <div class="main-prod-actions">
+            <a href="{% url 'product_edit' product.id %}" class="main-prod-edit"
+              >Edit</a
+            >
+            <form action="" method="POST">
+              {% csrf_token %}
+              <input class="main-prod-delete" type="submit" value="Delete" />
+            </form>
+          </div>
         </div>
       </main>
       {% endif %}

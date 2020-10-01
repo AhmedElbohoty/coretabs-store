@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product
 from .forms import AddProductForm
 
@@ -11,6 +11,11 @@ def products_list(request):
 
 
 def product_details(request, pk):
+    if request.method == 'POST':
+        product = Product.objects.get(pk=pk)
+        product.delete()
+        return redirect("products_list")
+
     try:
         product = Product.objects.get(pk=pk)
         context = {'product': product}
