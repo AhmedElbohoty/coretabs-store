@@ -11,6 +11,7 @@ def products_list(request):
 
 
 def product_details(request, pk):
+
     if request.method == 'POST':
         product = Product.objects.get(pk=pk)
         product.delete()
