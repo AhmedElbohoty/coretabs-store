@@ -60,12 +60,16 @@
         </div>
 
         <div>
+          {% if product.brand %}
+          <p class="main-prod-brand">{{ product.brand }}</p>
+          {% endif %}
           <p class="main-prod-name">{{ product.title }}</p>
           {% if product.description %}
           <p class="main-prod-desc">{{ product.description }}</p>
           {% else %}
           <p class="main-prod-desc">No description for this product</p>
           {% endif %}
+          <p class="main-prod-name">{{ product.price }}$</p>
         </div>
       </main>
       {% endif %}

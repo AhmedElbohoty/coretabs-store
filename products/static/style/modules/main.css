@@ -17,6 +17,18 @@
 .main-header-desc {
   color: #c8c8c8;
 }
+
+.main-header-add {
+  position: relative;
+  display: block;
+  margin: 24px auto 0 auto;
+  height: 40px;
+  width: 200px;
+  color: #fff;
+  background-color: #000;
+  border: none;
+  line-height: 40px;
+}
 /* #endregion header */
 
 .main-products {
@@ -94,6 +106,11 @@
 .main-prod-price {
   margin: 8px 0;
   font-size: 14px;
+  font-weight: 600;
+}
+
+.main-prod-brand {
+  margin: 16px 0;
   font-weight: 600;
 }
 

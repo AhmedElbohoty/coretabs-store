@@ -6,9 +6,10 @@ from django.utils import timezone
 
 
 class Product(models.Model):
+    brand = models.CharField(max_length=100)
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=500, blank=True, null=True)
-    price = models.DecimalField(max_digits=6, decimal_places=1)
+    price = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

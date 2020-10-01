@@ -1,0 +1,62 @@
+.form-main {
+  padding: 120px 10%;
+  display: flex;
+  justify-content: center;
+}
+
+/* #region header */
+.form-header {
+  margin-bottom: 64px;
+  text-align: center;
+}
+
+.form-h1 {
+  margin-bottom: 16px;
+  font-weight: 100;
+  text-align: center;
+}
+
+.form-header-desc {
+  color: #c8c8c8;
+}
+/* #endregion header */
+
+/* #region input */
+.form-inp-cont {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  margin-bottom: 8px;
+  font-style: 14px;
+}
+
+.form-inp {
+  padding: 0 8px;
+  height: 30px;
+  border: 1px #444 solid;
+  border-radius: 2px;
+  outline: none;
+}
+
+.form-textarea {
+  padding: 8px;
+  height: 120px;
+  border: 1px #444 solid;
+  border-radius: 2px;
+  outline: none;
+}
+
+.form-submit {
+  width: 140px;
+  height: 40px;
+  color: #fff;
+  border: none;
+  background-color: #000000;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+/* #endregion input */
