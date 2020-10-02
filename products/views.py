@@ -11,12 +11,6 @@ def products_list(request):
 
 
 def product_details(request, pk):
-
-    if request.method == 'POST':
-        product = Product.objects.get(pk=pk)
-        product.delete()
-        return redirect("products_list")
-
     try:
         product = Product.objects.get(pk=pk)
         context = {'product': product}
@@ -54,3 +48,9 @@ def product_edit(request, pk):
         form = AddProductForm(instance=product)
 
     return render(request, 'products/product-add.html', {'form': form, 'edit': True})
+
+
+def product_delete(request, pk):
+    product = Product.objects.get(pk=pk)
+    product.delete()
+    return redirect("products_list")

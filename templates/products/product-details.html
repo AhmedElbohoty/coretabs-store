@@ -76,10 +76,11 @@
             <a href="{% url 'product_edit' product.id %}" class="main-prod-edit"
               >Edit</a
             >
-            <form action="" method="POST">
-              {% csrf_token %}
-              <input class="main-prod-delete" type="submit" value="Delete" />
-            </form>
+            <a
+              href="{% url 'product_delete' product.id %}"
+              class="main-prod-delete"
+              >Delete</a
+            >
           </div>
         </div>
       </main>
