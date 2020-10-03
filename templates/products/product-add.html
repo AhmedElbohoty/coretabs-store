@@ -52,7 +52,7 @@
       </header>
 
       <main class="form-main">
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="form-header">
             <h1 class="form-h1">Add/Edit Product</h1>
@@ -87,6 +87,10 @@
               >{{ form.price.label }}:
             </label>
             {{ form.price }} {{ form.price.errors }}
+          </div>
+
+          <div class="form-inp-cont">
+            {{ form.image }} {{ form.image.errors }}
           </div>
 
           {% if edit %}
