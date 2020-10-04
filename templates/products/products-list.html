@@ -1,99 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{% extends "base.html" %} 
 
-    {% load static %}
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'style/base.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'style/modules/header.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'style/modules/svg.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'style/modules/main.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'style/modules/footer.css' %}"
-    />
+{% block head_title %}
+  All Products
+{% endblock %}
 
-    <script defer src="{% static 'js/index.js' %}"></script>
 
-    <title>Products</title>
-  </head>
-  <body>
-    <div class="root">
-      <header class="header">
-        <p class="header-title">S T O R E</p>
-        <div class="header-btn-cont">
-          <object
-            type="image/svg+xml"
-            data="{% static 'assets/icons/cart.svg' %}"
-            class="svg-cart"
-          >
-            Cart Logo
-          </object>
-          <button class="header-btn">Log in</button>
-        </div>
-      </header>
+{% block main %}
 
-      <main class="main">
-        <div class="main-header">
-          <h1 class="main-h1">Featured Products</h1>
-          <p class="main-header-desc">
-            Refresh your lock with pieces of our winter collection
-          </p>
+<main class="main">
+  <div class="main-header">
+    <h1 class="main-h1">Featured Products</h1>
+    <p class="main-header-desc">
+      Refresh your lock with pieces of our winter collection
+    </p>
 
-          <a href="{% url 'product_add' %}" class="main-header-add"
-            >Add Product</a
-          >
-        </div>
+    <a href="{% url 'product_add' %}" class="main-header-add">Add Product</a>
+  </div>
 
-        {% if not products %}
-        <p class="main-no-prods">New products will be available soon</p>
-        {% endif %}
+  {% if not products %}
+  <p class="main-no-prods">New products will be available soon</p>
+  {% endif %}
 
-        <div class="main-products">
-          {% for product in products %}
-          <div class="main-product-cont">
-            <div class="main-prod-img-cont">
-              <img
-                class="main-prod-img"
-                src="{{ product.image.url }}"
-                alt="Image"
-              />
-              <a
-                href="{% url 'product_details' product.pk %}"
-                class="main-prod-link"
-                >DETAILS</a
-              >
-            </div>
+  <div class="main-products">
+    {% for product in products %}
+    <div class="main-product-cont">
+      <div class="main-prod-img-cont">
+        <img class="main-prod-img" src="{{ product.image.url }}" alt="Image" />
+        <a href="{% url 'product_details' product.pk %}" class="main-prod-link"
+          >DETAILS</a
+        >
+      </div>
 
-            <p class="main-prod-name">{{ product.title }}</p>
-            <p class="main-prod-price">{{ product.price }}</p>
-            <p>Product ID: {{ product.id }}</p>
-          </div>
-          {% endfor %}
-        </div>
-      </main>
-
-      <footer class="footer">
-        <p>&copy; <span id="footer-year"></span> STORE All Right Reserved.</p>
-      </footer>
+      <p class="main-prod-name">{{ product.title }}</p>
+      <p class="main-prod-price">{{ product.price }}</p>
+      <p>Product ID: {{ product.id }}</p>
     </div>
-  </body>
-</html>
+    {% endfor %}
+  </div>
+</main>
+
+{% endblock %}

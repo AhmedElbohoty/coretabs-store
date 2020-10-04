@@ -1,98 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{% extends "base.html" %}
 
-    {% load static %}
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'style/base.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'style/modules/header.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'style/modules/svg.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'style/modules/main.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'style/modules/footer.css' %}"
-    />
+{% block head_title %}
+  Product Details
+{% endblock %}
 
-    <title>Title</title>
-  </head>
-  <body>
-    <div class="root">
-      <header class="header">
-        <a href="{% url 'products_list' %}" class="header-title">S T O R E</a>
+{% block main %} 
 
-        <div class="header-btn-cont">
-          <object
-            type="image/svg+xml"
-            data="{% static 'assets/icons/cart.svg' %}"
-            class="svg-cart"
-          >
-            Cart Logo
-          </object>
-          <button class="header-btn">Log in</button>
-        </div>
-      </header>
+{% if not product %}
+<main class="main">
+  <p class="main-no-prods">There is no product with this ID</p>
+</main>
+{% else %}
+<main class="main main-details">
+  <div class="main-prod-img-cont">
+    <img class="main-prod-img" src="{{ product.image.url }}" alt="Image" />
+  </div>
 
-      {% if not product %}
-      <main class="main">
-        <p class="main-no-prods">There is no product with this ID</p>
-      </main>
-      {% else %}
-      <main class="main main-details">
-        <div class="main-prod-img-cont">
-          <img
-            class="main-prod-img"
-            src="{{ product.image.url }}"
-            alt="Image"
-          />
-        </div>
+  <div>
+    {% if product.brand %}
+    <p class="main-prod-brand">{{ product.brand }}</p>
+    {% endif %}
+    <p class="main-prod-name">{{ product.title }}</p>
+    {% if product.description %}
+    <p class="main-prod-desc">{{ product.description }}</p>
+    {% else %}
+    <p class="main-prod-desc">No description for this product</p>
+    {% endif %}
+    <p class="main-prod-name">{{ product.price }}$</p>
 
-        <div>
-          {% if product.brand %}
-          <p class="main-prod-brand">{{ product.brand }}</p>
-          {% endif %}
-          <p class="main-prod-name">{{ product.title }}</p>
-          {% if product.description %}
-          <p class="main-prod-desc">{{ product.description }}</p>
-          {% else %}
-          <p class="main-prod-desc">No description for this product</p>
-          {% endif %}
-          <p class="main-prod-name">{{ product.price }}$</p>
-
-          <div class="main-prod-actions">
-            <a href="{% url 'product_edit' product.id %}" class="main-prod-edit"
-              >Edit</a
-            >
-            <a
-              href="{% url 'product_delete' product.id %}"
-              class="main-prod-delete"
-              >Delete</a
-            >
-          </div>
-        </div>
-      </main>
-      {% endif %}
-
-      <footer class="footer">
-        <p>&copy; <span id="footer-year"></span> STORE All Right Reserved.</p>
-      </footer>
+    <div class="main-prod-actions">
+      <a href="{% url 'product_edit' product.id %}" class="main-prod-edit"
+        >Edit</a
+      >
+      <a href="{% url 'product_delete' product.id %}" class="main-prod-delete"
+        >Delete</a
+      >
     </div>
-  </body>
-</html>
+  </div>
+</main>
+{% endif %}
+
+{% endblock %}

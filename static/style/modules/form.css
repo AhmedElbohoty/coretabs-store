@@ -4,6 +4,10 @@
   justify-content: center;
 }
 
+.form {
+  width: 400px;
+}
+
 /* #region header */
 .form-header {
   margin-bottom: 64px;
