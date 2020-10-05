@@ -53,7 +53,16 @@
           >
             Cart Logo
           </object>
-          <button class="header-btn">Log in</button>
+
+          <div class="header-links">
+            {% if user.is_authenticated %}
+            <p>Hi, {{ user.username }}</p>
+            <a href="{% url 'logout' %}" class="header-link">Log out</a>
+            {% else %}
+            <a href="{% url 'login' %}" class="header-link">Log in</a>
+            <a href="{% url 'signup' %}" class="header-link">Sign up</a>
+            {% endif %}
+          </div>
         </div>
       </header>
       {% block main %} {% endblock %}

@@ -1,5 +1,6 @@
 /* #region svg cart */
 .svg-cart {
+  margin-right: 16px;
   width: 20px;
   height: 20px;
   transition: opacity var(--trans-timing-fun) 300ms;
