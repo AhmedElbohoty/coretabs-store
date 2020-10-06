@@ -14,7 +14,10 @@
       Refresh your lock with pieces of our winter collection
     </p>
 
+    {% if user.is_superuser %}
     <a href="{% url 'product_add' %}" class="main-header-add">Add Product</a>
+    {% endif %}
+
   </div>
 
   {% if not products %}

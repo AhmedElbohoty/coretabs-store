@@ -28,6 +28,7 @@
     {% endif %}
     <p class="main-prod-name">{{ product.price }}$</p>
 
+    {% if user.is_superuser %}
     <div class="main-prod-actions">
       <a href="{% url 'product_edit' product.id %}" class="main-prod-edit"
         >Edit</a
@@ -36,6 +37,7 @@
         >Delete</a
       >
     </div>
+    {% endif %}
   </div>
 </main>
 {% endif %}
