@@ -1,14 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
-# Create your models here.
-
-class User(AbstractUser):
-    first_name = models.CharField(
-        max_length=30, blank=True, null=True, help_text="Optional.")
-    last_name = models.CharField(
-        max_length=30,  blank=True, null=True, help_text="Optional.")
-    email = models.EmailField(
-        max_length=254, help_text="Required. Inform a valid email address")
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     address = models.TextField(max_length=500, blank=True)
