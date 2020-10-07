@@ -15,7 +15,7 @@ class SignUpForm(UserCreationForm):
     email = forms.EmailField(
         max_length=254, help_text="Required. Inform a valid email address")
     address = forms.CharField(
-        max_length=254,  required=False, help_text="Optional.")
+        max_length=254,  required=False, help_text="Optional.", widget=forms.Textarea)
 
     class Meta:
         model = User
