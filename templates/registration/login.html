@@ -1,10 +1,36 @@
+{% extends "base.html" %} 
 
-<h1>Login</h1>
+{% block head_title %} Login {% endblock %} 
 
-<form  method="POST">
+{% block main %}
+<main class="form-main">
+  <form class="form" method="POST">
     {% csrf_token %}
 
-    {{ form.as_p }}
+    <div class="form-header">
+      <h1 class="form-h1">Login</h1>
+    </div>
 
-    <input type="submit" value="login">
-</form>
+    <div class="form-inp-cont">
+      <label class="form-label" for="{{ form.username.id_for_label }}"
+        >{{ form.username.label }}:
+      </label>
+      {{ form.username }} 
+    </div>
+
+    <div class="form-inp-cont">
+      <label class="form-label" for="{{ form.password.id_for_label }}"
+        >{{ form.password.label }}:
+      </label>
+      {{ form.password }} 
+    </div>
+
+    {% if form.errors %}
+      <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    <input type="submit" class="form-submit" value="Login" />
+    <a href="{% url 'password_reset' %}">Reset password</a>
+  </form>
+</main>
+{% endblock %}
