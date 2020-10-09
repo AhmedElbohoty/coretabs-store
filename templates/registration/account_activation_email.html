@@ -1,0 +1,4 @@
+hi {{ user.username }},
+
+Please click on the link below:
+{{ domain }}{% url 'activate_email' uid=uid token=token %}

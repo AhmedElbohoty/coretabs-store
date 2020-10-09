@@ -136,3 +136,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
