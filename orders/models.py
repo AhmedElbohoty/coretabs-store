@@ -1,0 +1,12 @@
+from django.db import models
+from django.contrib.auth import get_user_model
+
+from products.models import Product
+
+User = get_user_model()
+
+
+class Order(models.Model):
+    address = models.TextField(max_length=500, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    items = models.ManyToManyField(Product)
