@@ -36,8 +36,12 @@
       <a href="{% url 'product_delete' product.id %}" class="main-prod-delete"
         >Delete</a
       >
+
     </div>
     {% endif %}
+    <br />
+    <a href="{% url 'add_to_cart' product_id=product.id %}"  class="main-prod-edit">Add to product</a>
+
   </div>
 </main>
 {% endif %}

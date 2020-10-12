@@ -10,7 +10,7 @@ class Profile(models.Model):
     address = models.TextField(max_length=500, blank=True)
 
     def __str__(self):
-        return self.user
+        return str(self.user)
 
 
 @receiver(post_save, sender=User)
