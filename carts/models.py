@@ -17,8 +17,8 @@ class Cart(models.Model):
 
     def total_price(self):
         total = self.user.cart.items.aggregate(total_price=Sum('price'))
-   
-        return  total['total_price']
+
+        return total['total_price']
 
     def __str__(self):
         return str(self.user)

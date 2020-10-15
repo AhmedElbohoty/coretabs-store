@@ -1,6 +1,13 @@
 {% extends "base.html" %} 
 
-
+{% block head_links %}
+{% load static %}
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'style/modules/form.css' %}"
+  />
+{% endblock %}
 
 {% block head_title %}
   Product Form
@@ -8,7 +15,7 @@
 
 {% block main %}
 
-<main class="form-main">
+<div class="form-main">
   <form class="form"  method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-header">
@@ -54,6 +61,6 @@
     <input type="submit" class="form-submit" value="Save" />
     {% endif %}
   </form>
-</main>
+</div>
 
 {% endblock %}

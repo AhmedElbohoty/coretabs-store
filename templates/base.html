@@ -4,31 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {% load static %}
+    {% load static %}  
     <link
       rel="stylesheet"
       type="text/css"
       href="{% static 'style/base.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'style/modules/header.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'style/modules/svg.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'style/modules/main.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'style/modules/footer.css' %}"
     />
 
     <link
@@ -36,6 +16,14 @@
       type="text/css"
       href="{% static 'style/modules/form.css' %}"
     />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'style/modules/shared.css' %}"
+    />
+
+    {% block head_links %} {% endblock %}
 
     <script defer src="{% static 'js/index.js' %}"></script>
 
@@ -45,11 +33,11 @@
     <div class="root">
       <header class="header">
         <a href="{%url 'home'%}" class="header-title">S T O R E</a>
-        <div class="header-btn-cont">
+        <div class="header-links-cont">
           <object
             type="image/svg+xml"
             data="{% static 'assets/icons/cart.svg' %}"
-            class="svg-cart"
+            class="header-cart"
           >
             Cart Logo
           </object>
@@ -57,15 +45,16 @@
           <div class="header-links">
             {% if user.is_authenticated %}
             <p>Hi, {{ user.username }}</p>
-            <a href="{% url 'logout' %}" class="header-link">Log out</a>
+            <a href="{% url 'logout' %}" class="btn btn-secondary">Log out</a>
             {% else %}
-            <a href="{% url 'login' %}" class="header-link">Log in</a>
-            <a href="{% url 'signup' %}" class="header-link">Sign up</a>
+            <a href="{% url 'login' %}" class="btn">Log in</a>
+            <a href="{% url 'signup' %}" class="btn btn-secondary">Sign up</a>
             {% endif %}
           </div>
         </div>
       </header>
-      {% block main %} {% endblock %}
+
+      <main class="main">{% block main %} {% endblock %}</main>
 
       <footer class="footer">
         <p>&copy; <span id="footer-year"></span> STORE All Right Reserved.</p>

@@ -1,45 +1,47 @@
 {% extends "base.html" %} 
 
+{% block head_links %}
+{% load static %}
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'style/modules/products.css' %}"
+  />
+{% endblock %}
+
 {% block head_title %}
   All Products
 {% endblock %}
 
-
 {% block main %}
-
-<main class="main">
-  <div class="main-header">
-    <h1 class="main-h1">Featured Products</h1>
-    <p class="main-header-desc">
+  <div class="products-header">
+    <h1 class="products-h1">Featured Products</h1>
+    <p class="products-header-desc">
       Refresh your lock with pieces of our winter collection
     </p>
 
     {% if user.is_superuser %}
-    <a href="{% url 'product_add' %}" class="main-header-add">Add Product</a>
+    <a href="{% url 'product_add' %}" class="btn">Add Product</a>
     {% endif %}
-
   </div>
 
   {% if not products %}
-  <p class="main-no-prods">New products will be available soon</p>
+    <p class="products-no">New products will be available soon</p>
   {% endif %}
 
-  <div class="main-products">
+  <div class="products-grid">
     {% for product in products %}
-    <div class="main-product-cont">
-      <div class="main-prod-img-cont">
-        <img class="main-prod-img" src="{{ product.image.url }}" alt="Image" />
-        <a href="{% url 'product_details' product.pk %}" class="main-prod-link"
+    <div class="product-cont">
+      <div class="prods-img-cont">
+        <img class="prods-img" src="{{ product.image.url }}" alt="Image" />
+        <a href="{% url 'product_details' product.pk %}" class="prods-link"
           >DETAILS</a
         >
       </div>
 
-      <p class="main-prod-name">{{ product.title }}</p>
-      <p class="main-prod-price">{{ product.price }}</p>
-      <p>Product ID: {{ product.id }}</p>
+      <p class="prods-name">{{ product.title }}</p>
+      <p class="prods-price">{{ product.price }}</p>
     </div>
     {% endfor %}
   </div>
-</main>
-
 {% endblock %}

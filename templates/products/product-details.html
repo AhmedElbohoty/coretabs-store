@@ -1,49 +1,55 @@
 {% extends "base.html" %}
 
+{% block head_links %}
+{% load static %}
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'style/modules/products.css' %}"
+  />
+{% endblock %}
+
 {% block head_title %}
   Product Details
 {% endblock %}
 
 {% block main %} 
 
-{% if not product %}
-<main class="main">
-  <p class="main-no-prods">There is no product with this ID</p>
-</main>
-{% else %}
-<main class="main main-details">
-  <div class="main-prod-img-cont">
-    <img class="main-prod-img" src="{{ product.image.url }}" alt="Image" />
-  </div>
-
-  <div>
-    {% if product.brand %}
-    <p class="main-prod-brand">{{ product.brand }}</p>
-    {% endif %}
-    <p class="main-prod-name">{{ product.title }}</p>
-    {% if product.description %}
-    <p class="main-prod-desc">{{ product.description }}</p>
-    {% else %}
-    <p class="main-prod-desc">No description for this product</p>
-    {% endif %}
-    <p class="main-prod-name">{{ product.price }}$</p>
-
-    {% if user.is_superuser %}
-    <div class="main-prod-actions">
-      <a href="{% url 'product_edit' product.id %}" class="main-prod-edit"
-        >Edit</a
-      >
-      <a href="{% url 'product_delete' product.id %}" class="main-prod-delete"
-        >Delete</a
-      >
-
+<div class="prod-details">
+  {% if not product %}
+    <p class="products-no">There is no product with this ID</p>
+  {% else %}
+  
+    <div class="prods-img-cont">
+      <img class="prods-img" src="{{ product.image.url }}" alt="Image" />
     </div>
-    {% endif %}
-    <br />
-    <a href="{% url 'add_to_cart' product_id=product.id %}"  class="main-prod-edit">Add to product</a>
-
-  </div>
-</main>
-{% endif %}
+  
+    <div>
+      {% if product.brand %}
+      <p class="prod-info prod-info-brand">{{ product.brand }}</p>
+      {% endif %}
+      <p class="prod-info">{{ product.title }}</p>
+      {% if product.description %}
+      <p class="prod-info">{{ product.description }}</p>
+      {% else %}
+      <p class="prod-info">No description for this product</p>
+      {% endif %}
+      <p class="prod-info prod-info-price">{{ product.price }}$</p>
+  
+      {% if user.is_superuser %}
+      <div class="prod-actions">
+        <a href="{% url 'product_edit' product.id %}" class="btn"
+          >Edit</a
+        >
+        <a href="{% url 'product_delete' product.id %}" class="btn btn-danger"
+          >Delete</a
+        >
+      </div>
+      {% endif %}
+      <br />
+      <a href="{% url 'add_to_cart' product_id=product.id %}"  class="btn btn-secondary">Add to cart</a>
+    </div>
+  {% endif %}
+</div>
 
 {% endblock %}
