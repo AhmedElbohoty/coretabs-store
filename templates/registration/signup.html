@@ -1,67 +1,76 @@
 {% extends "base.html" %} 
 
+{% block head_links %}
+{% load static %}
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'style/modules/form.css' %}"
+  />
+{% endblock %}
+
 {% block head_title %} Sign up {% endblock %} 
 
 {% block main %}
-<main class="form-main">
-  <form class="form" method="POST">
-    {% csrf_token %} 
-
-    <div class="form-header">
-      <h1 class="form-h1">Sign up</h1>
-    </div>
-
-    <div class="form-inp-cont">
-      <label class="form-label" for="{{ form.username.id_for_label }}"
-        >{{ form.username.label }}:
-      </label>
-      {{ form.username }} {{ form.username.errors }}
-    </div>
-
-    <div class="form-inp-cont">
-      <label class="form-label" for="{{ form.password1.id_for_label }}"
-        >{{ form.password1.label }}:
-      </label>
-      {{ form.password1 }} {{ form.password1.errors }}
-    </div>
-
-    <div class="form-inp-cont">
-      <label class="form-label" for="{{ form.password2.id_for_label }}"
-        >{{ form.password2.label }}:
-      </label>
-      {{ form.password2 }} {{ form.password2.errors }}
-    </div>
-
-    <div class="form-inp-cont">
-      <label class="form-label" for="{{ form.first_name.id_for_label }}"
-        >{{ form.first_name.label }}:
-      </label>
-      {{ form.first_name }} {{ form.first_name.errors }}
-    </div>
-
-    <div class="form-inp-cont">
-      <label class="form-label" for="{{ form.last_name.id_for_label }}"
-        >{{ form.last_name.label }}:
-      </label>
-      {{ form.last_name }} {{ form.last_name.errors }}
-    </div>
-
-    <div class="form-inp-cont">
-      <label class="form-label" for="{{ form.email.id_for_label }}"
-        >{{ form.email.label }}:
-      </label>
-      {{ form.email }} {{ form.email.errors }}
-    </div>
-
-    <div class="form-inp-cont">
-      <label class="form-label" for="{{ form.address.id_for_label }}"
-        >{{ form.address.label }}:
-      </label>
-      {{ form.address }} {{ form.address.errors }}
-    </div>
-
-    <input type="submit" class="form-submit" value="Signup" />
-
-  </form>
-</main>
+  <div class="form-cont">
+    <form class="form" method="POST">
+      {% csrf_token %} 
+  
+      <div class="form-header">
+        <h1 class="form-h1">Sign up</h1>
+      </div>
+  
+      <div class="form-inp-cont">
+        <label class="form-label" for="{{ form.username.id_for_label }}"
+          >{{ form.username.label }}:
+        </label>
+        {{ form.username }} {{ form.username.errors }}
+      </div>
+  
+      <div class="form-inp-cont">
+        <label class="form-label" for="{{ form.password1.id_for_label }}"
+          >{{ form.password1.label }}:
+        </label>
+        {{ form.password1 }} {{ form.password1.errors }}
+      </div>
+  
+      <div class="form-inp-cont">
+        <label class="form-label" for="{{ form.password2.id_for_label }}"
+          >{{ form.password2.label }}:
+        </label>
+        {{ form.password2 }} {{ form.password2.errors }}
+      </div>
+  
+      <div class="form-inp-cont">
+        <label class="form-label" for="{{ form.first_name.id_for_label }}"
+          >{{ form.first_name.label }}:
+        </label>
+        {{ form.first_name }} {{ form.first_name.errors }}
+      </div>
+  
+      <div class="form-inp-cont">
+        <label class="form-label" for="{{ form.last_name.id_for_label }}"
+          >{{ form.last_name.label }}:
+        </label>
+        {{ form.last_name }} {{ form.last_name.errors }}
+      </div>
+  
+      <div class="form-inp-cont">
+        <label class="form-label" for="{{ form.email.id_for_label }}"
+          >{{ form.email.label }}:
+        </label>
+        {{ form.email }} {{ form.email.errors }}
+      </div>
+  
+      <div class="form-inp-cont">
+        <label class="form-label" for="{{ form.address.id_for_label }}"
+          >{{ form.address.label }}:
+        </label>
+        {{ form.address }} {{ form.address.errors }}
+      </div>
+  
+      <input type="submit" class="btn" value="Signup" />
+  
+    </form>
+  </div>
 {% endblock %}

@@ -1,4 +1,5 @@
-.form-main {
+.form-cont {
+  width: 100%;
   display: flex;
   justify-content: center;
 }
@@ -52,14 +53,4 @@
   outline: none;
 }
 
-.form-submit {
-  width: 140px;
-  height: 40px;
-  color: #fff;
-  border: none;
-  background-color: #000000;
-  line-height: 40px;
-  text-align: center;
-  cursor: pointer;
-}
 /* #endregion input */

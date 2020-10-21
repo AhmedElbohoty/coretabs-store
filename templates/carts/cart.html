@@ -1,18 +1,25 @@
 {% extends "base.html" %} 
 
+{% block head_links %}
+{% load static %}
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'style/modules/cart.css' %}"
+  />
+{% endblock %}
+
 {% block head_title %}
   Cart
 {% endblock %}
 
 
 {% block main %}
-<main class="main">
     {% for product in products %}
-
-    <li>
+    <li class="cart-item">
       <h2>{{ product.title | capfirst }}</h2>
       <h2>{{ product.price }}</h2>
-      <a href="{% url 'remove_from_cart' product_id=product.id %}"  class="main-prod-delete">Remove</a>
+      <a href="{% url 'remove_from_cart' product_id=product.id %}" class="btn btn-danger">Remove</a>
     </li>
 
     {% empty %}
@@ -23,11 +30,9 @@
     <br />
     <hr />
     <br />
-    <a href="{% url 'products_list' %}"  class="main-prod-edit">Add more Products</a>
+    <a href="{% url 'products_list' %}"  class="btn">Add more Products</a>
     <br />
-    <a href="{% url 'remove_all_from_cart' %}"  class="main-prod-delete">Clear cart</a>
+    <a href="{% url 'remove_all_from_cart' %}"  class="btn btn-danger">Clear cart</a>
     <br />
     <p>{{ total_price }}</p>
-
-</main>
 {% endblock %}

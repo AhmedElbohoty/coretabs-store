@@ -67,8 +67,9 @@
 
 /* #region btn */
 .btn {
+  padding: 0 16px;
   display: block;
-  width: min-content;
+  width: max-content;
   min-width: 140px;
   height: 40px;
   color: #fff;
@@ -95,5 +96,4 @@
 .btn-danger {
   background-color: red;
 }
-
 /* #endregion btn */

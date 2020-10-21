@@ -23,3 +23,7 @@ button {
   font-family: inherit;
   cursor: pointer;
 }
+
+li {
+  list-style: none;
+}

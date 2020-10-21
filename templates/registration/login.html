@@ -1,9 +1,18 @@
 {% extends "base.html" %} 
 
+{% block head_links %}
+{% load static %}
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'style/modules/form.css' %}"
+  />
+{% endblock %}
+
 {% block head_title %} Login {% endblock %} 
 
 {% block main %}
-<main class="form-main">
+<div class="form-cont">
   <form class="form" method="POST">
     {% csrf_token %}
 
@@ -29,8 +38,8 @@
       <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
 
-    <input type="submit" class="form-submit" value="Login" />
+    <input type="submit" class="btn" value="Login" />
     <a href="{% url 'password_reset' %}">Reset password</a>
   </form>
-</main>
+</div>
 {% endblock %}
